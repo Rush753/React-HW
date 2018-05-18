@@ -10,10 +10,14 @@ export default class TodoList extends Component {
     render() {
         return (
             <div>
-                {this.props.items.map(item => (
-                    <div>
-                    <input type="checkbox"/>
-                    <div key={item.id} >{item.text}</div>
+                {this.props.items.map((item, index)  => (
+                    <div key = {index} >
+                    {/* <input type="checkbox"/> */}
+
+                    <div>{item.text}</div>
+                    {/* <div key = {item.id} >{item.text}</div> */}
+                    {/* <div key = {item.toString} >{item.text}</div> */}
+                    
                     <button onClick = {this.deleteTask(item.id)}>delete</button>
                     </div>
                 ))}
