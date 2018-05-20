@@ -44,6 +44,12 @@ class App extends Component {
     this.setState({ items: arr })
   }
 
+  returnBody = () => {
+    return this.state.items.map((item, index) => {
+      return <Task item={item} key={index} index={index} update={this.updateTask} delete={this.deleteTask} styleDecor={this.styleDecor} itemStyle={item.styleDec}/>
+    })
+  }
+
   styleDecor = (event) => {
     console.log(event.target.style.textDecoration);
     if(event.target.style.textDecoration === '')
@@ -62,12 +68,6 @@ class App extends Component {
     }
   }
 
-  returnBody = () => {
-    return this.state.items.map((item, index) => {
-      return <Task item={item} key={index} index={index} update={this.updateTask} delete={this.deleteTask} styleDecor={this.styleDecor} itemStyle={item.styleDec}/>
-    })
-  }
-  
   render() {
     // Preparing data for render!
     const body = this.returnBody();
