@@ -14,6 +14,10 @@ export default class Task extends Component {
     //     this.item = nextProps.item;
     // }
 
+    editTask = () => {
+        this.setState ({edit: false});
+      }
+
     saveEditTask = () => {
         let value = this.editTxt.current.value;
         this.props.update(value, this.props.index);
@@ -25,7 +29,7 @@ export default class Task extends Component {
             if (this.props.itemStyle) {
                 return (
                     <div id={this.props.index} className="task task-list__task">
-                        <div className="task__text" style={{ textDecorationLine: 'line-through' }} onClick={this.props.styleDecor} >{this.props.item.text}</div>
+                        <div className="task__text" style={{ textDecoration: 'line-through' }} onClick={this.props.styleDecor} title={this.props.item.text}>{this.props.item.text} </div>
                         <button className="task__btnEdit btn-hover" onClick={this.editTask}>EDIT</button>
                         <button className="task__btnDel btn-hover" onClick={this.deleteTask}>х</button>
                     </div>
@@ -33,7 +37,7 @@ export default class Task extends Component {
             } else {
                 return (
                     <div id={this.props.index} className="task task-list__task">
-                        <div className="task__text" onClick={this.props.styleDecor} >{this.props.item.text}</div>
+                        <div className="task__text" onClick={this.props.styleDecor} title={this.props.item.text}>{this.props.item.text}</div>
                         <button className="task__btnEdit btn-hover" onClick={this.editTask}>EDIT</button>
                         <button className="task__btnDel btn-hover" onClick={this.deleteTask}>х</button>
                     </div>
@@ -42,7 +46,7 @@ export default class Task extends Component {
         } else {
             return (
                 <div id={this.props.index} className="task task-list__task">
-                    <input className="task__text" ref={this.editTxt} />
+                    <input className="task__text-edit" ref={this.editTxt} />
                     <button className="task__btnEdit btn-hover" onClick={this.saveEditTask}>OK</button>
                 </div>
             );
